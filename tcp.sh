@@ -412,7 +412,10 @@ esac
 
 #删除多余内核
 detele_kernel(){
-	if [[ "${release}" == "centos" ]]; then
+        if [[ true ]]; then
+		echo -e "不卸载内核"
+		sleep 5s
+	elif [[ "${release}" == "centos" ]]; then
 		rpm_total=`rpm -qa | grep kernel | grep -v "${kernel_version}" | grep -v "noarch" | wc -l`
 		if [ "${rpm_total}" > "1" ]; then
 			echo -e "检测到 ${rpm_total} 个其余内核，开始卸载..."
